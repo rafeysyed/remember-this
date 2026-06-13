@@ -1,6 +1,8 @@
 import os
 
+# pyrefly: ignore [missing-import]
 import chromadb
+# pyrefly: ignore [missing-import]
 import ollama
 from dotenv import load_dotenv
 
@@ -28,7 +30,7 @@ def add_to_vector_store(memory_id: int, text: str) -> str:
 def search_vector_store(
     query: str,
     n_results: int | None = 10,
-    distance_threshold: float = 450.0,
+    distance_threshold: float = 800.0,
 ) -> list[str]:
     """Returns a list of ChromaDB IDs ranked by similarity and filtered by distance threshold."""
     total_documents = collection.count()

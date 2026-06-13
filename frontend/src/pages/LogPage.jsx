@@ -40,13 +40,28 @@ export default function LogPage({ message, setMessage }) {
     return () => window.clearTimeout(timeoutId);
   }, [confirmation]);
 
-  useEffect(() => {
+  const adjustHeight = () => {
     const textarea = textareaRef.current;
     if (!textarea) return;
-    const maxHeight = 290;
+    const rect = textarea.getBoundingClientRect();
+    // Fallback to a standard vertical position if the element is not laid out yet
+    const topOffset = rect.top > 0 ? rect.top : 350;
+    
+    // 12px form bottom padding + 40px confirmation container + 48px section bottom padding
+    const bottomReserved = 100;
+    const availableHeight = window.innerHeight - topOffset - bottomReserved;
+    // Dynamic max height capped at 280px, but always leaving at least 120px height
+    const maxHeight = Math.max(120, Math.min(280, availableHeight));
+    
     textarea.style.height = "auto";
     textarea.style.height = `${Math.min(textarea.scrollHeight, maxHeight)}px`;
     textarea.style.overflowY = textarea.scrollHeight > maxHeight ? "auto" : "hidden";
+  };
+
+  useEffect(() => {
+    adjustHeight();
+    window.addEventListener("resize", adjustHeight);
+    return () => window.removeEventListener("resize", adjustHeight);
   }, [message]);
 
   const handleSubmit = (event) => {
@@ -65,16 +80,16 @@ export default function LogPage({ message, setMessage }) {
   };
 
   return (
-    <main className="h-full overflow-hidden px-6 pb-12 pt-4 sm:px-10">
+    <main className="h-full overflow-hidden px-6 pt-4 sm:px-10">
       <section className="mx-auto flex h-full w-full max-w-[640px] flex-col items-center pt-[25vh] pb-12">
-        <div className="w-full">
-          <h2
-            className="text-center font-display text-4xl font-medium leading-normal tracking-normal text-foreground sm:text-5xl truncate w-full px-4 mb-8 pb-2"
-            title={heading}
-          >
-            {heading}
-          </h2>
+        <h2
+          className="text-left font-display text-4xl font-medium leading-normal tracking-normal text-foreground sm:text-5xl truncate w-full px-1 mb-8 pb-2 shrink-0"
+          title={heading}
+        >
+          {heading}
+        </h2>
 
+        <div className="w-full shrink-0">
           <form
             onSubmit={handleSubmit}
             className="flex items-end gap-3 rounded-3xl border bg-white p-3 shadow-sm"
@@ -87,7 +102,7 @@ export default function LogPage({ message, setMessage }) {
                 onKeyDown={handleKeyDown}
                 placeholder="Describe something you want to remember..."
                 rows={1}
-                className="max-h-[320px] overflow-auto border-0 bg-transparent px-2 py-2 shadow-none focus:ring-0 subtle-scrollbar pr-3"
+                className="max-h-[280px] overflow-auto border-0 bg-transparent px-2 py-2 shadow-none focus:ring-0 subtle-scrollbar pr-3"
                 disabled={mutation.isPending}
               />
             </div>
@@ -102,7 +117,7 @@ export default function LogPage({ message, setMessage }) {
             </Button>
           </form>
 
-          <div className="mt-4 flex min-h-6 justify-center text-center text-sm">
+          <div className="mt-4 flex min-h-6 justify-start text-left pl-3 text-sm">
             {/* Keep for future use if LLM summary is re-enabled:
             mutation.isPending ? (
               <p className="saving-pulse text-muted-foreground">Saving memory</p>

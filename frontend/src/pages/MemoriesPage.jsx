@@ -102,12 +102,16 @@ export default function MemoriesPage() {
         {isError ? <p className="text-sm text-destructive">{error.message}</p> : null}
 
         {!isLoading && !isError && memories.length === 0 ? (
-          <p className="text-sm text-muted-foreground">
-            No memories yet.{" "}
-            <Link className="font-medium text-primary underline-offset-4 hover:underline" to="/">
-              Start by logging something.
-            </Link>
-          </p>
+          debouncedSearch ? (
+            <p className="text-sm text-muted-foreground">No memories found.</p>
+          ) : (
+            <p className="text-sm text-muted-foreground">
+              No memories yet.{" "}
+              <Link className="font-medium text-primary underline-offset-4 hover:underline" to="/">
+                Start by logging something.
+              </Link>
+            </p>
+          )
         ) : null}
 
         {!isLoading && !isError && memories.length > 0 ? (
