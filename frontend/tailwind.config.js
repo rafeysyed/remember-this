@@ -28,6 +28,10 @@ export default {
         md: "6px",
         sm: "4px",
       },
+      fontFamily: {
+        serif: ["Lora", "Georgia", "ui-serif", "serif"],
+        display: ["Playfair Display", "Georgia", "ui-serif", "serif"],
+      },
     },
   },
   plugins: [],

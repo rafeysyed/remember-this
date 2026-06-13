@@ -45,10 +45,6 @@ export function getMemories({ search = "", page = 1, pageSize = 10 } = {}) {
   return request(`/memories${query ? `?${query}` : ""}`);
 }
 
-export function getMemory(id) {
-  return request(`/memories/${id}`);
-}
-
 export function deleteMemory(id) {
   return request(`/memories/${id}`, {
     method: "DELETE",

@@ -1,51 +1,112 @@
-# Memory Inputs For LogPage
+Here are prompts across different life moments — paste any of these as-is or adapt them:
 
-Copy one entry at a time into the LogPage.
+---
 
-```text
-In January 2024, I built a Dockerized FastAPI backend for an internal career memory logger, connected it to SQLite and ChromaDB, and improved the API so users could search memories semantically and filter them by type, skills, and date range.
+**Big life changes**
+```
+I just accepted a new job offer at a company I'm really excited about. It's a big shift from what I've been doing.
+```
+```
+We finally moved into the new apartment today. Took weeks of packing but it feels like a fresh start.
+```
+```
+I ended a long friendship today. It was mutual but still heavy. Not sure how I feel about it yet.
 ```
 
-```text
-In March 2024, I completed a Kubernetes deployment workflow for a Python application, created reusable manifests, configured environment variables safely, and reduced manual deployment steps for the team.
+---
+
+**Loss and grief**
+```
+My dog passed away this morning. He'd been with me for 11 years. The house feels very empty right now.
+```
+```
+Got news that my uncle passed away. We weren't very close but it hit harder than I expected.
+```
+```
+A relationship I thought had a future ended today. I'm okay but it's going to take some time.
 ```
 
-```text
-In May 2024, I earned a cloud fundamentals certification after studying compute, storage, networking, IAM, and deployment patterns, then shared a short summary with teammates to help them prepare too.
+---
+
+**Happy moments**
+```
+Had one of those rare evenings where everything just felt right. Good food, good people, no stress.
+```
+```
+My sister got engaged today. The whole family found out together and it was a genuinely joyful moment.
+```
+```
+Finished something I'd been putting off for months. Small thing but I feel lighter.
 ```
 
-```text
-In July 2024, I fixed a production issue where pagination returned inconsistent results after filtering, traced the problem to sorting before filtering, and changed the flow so ranking and pagination were applied in the correct order.
+---
+
+**Realizations and shifts**
+```
+I've been feeling burnt out for a while and I think I finally understand why. I've been saying yes to everything.
+```
+```
+Had a conversation today that changed how I think about a friendship I've had for years.
+```
+```
+I realized I've been avoiding something important. Not ready to act on it yet but I can see it clearly now.
 ```
 
-```text
-In September 2024, I added a React filter panel with type chips, skill tags, date inputs, and TanStack Query parameters so users could combine search and filters without losing pagination behavior.
+---
+
+**Health and body**
+```
+Started going to the gym again after a long break. First session was humbling but I showed up.
+```
+```
+Been dealing with poor sleep for weeks. Finally made a doctor's appointment today.
+```
+```
+Had a health scare this week. Tests came back fine but it shook me more than I expected.
 ```
 
-```text
-In November 2024, I improved a frontend loading experience by adding skeleton cards, clearer empty states, and better error messages, making the page feel more stable while API calls were running.
+---
+
+**Family**
+```
+Had a long phone call with my mom today. We don't talk enough and this reminded me why I should call more.
+```
+```
+Parents are getting older and I'm starting to feel that shift where I worry about them more than they worry about me.
+```
+```
+My younger sibling is going through something hard and I don't know how to help. Feeling a bit helpless.
 ```
 
-```text
-In January 2025, I refactored a FastAPI route to keep database filtering in SQLite while preserving ChromaDB semantic search ranking, which made search results more accurate and predictable.
+---
+
+**Travel and experiences**
+```
+Just got back from a solo trip. Didn't go perfectly but I learned I'm more comfortable alone than I thought.
+```
+```
+Visited my hometown for the first time in years. Strange how much has changed and how much hasn't.
 ```
 
-```text
-In February 2025, I created a cleanup script for old SQLite records that had no embedding IDs, documented the one-time command in the README, and made the migration safer by avoiding any ChromaDB changes.
+---
+
+**Money and stability**
+```
+Paid off a debt that's been hanging over me for two years. It's not a huge amount but it's done.
+```
+```
+Going through a financially tight period right now. Managing but it's stressful in the background of everything.
 ```
 
-```text
-In April 2025, I solved a UI bug where a modal allowed the background page to scroll on mobile, added scroll boundary handling, and improved the expanded memory card interaction.
-```
+---
 
-```text
-In June 2025, I learned how to structure AI extraction prompts for consistent JSON output, including fields like event date, type, title, skills, impact, organization, and summary.
+**Quiet and ordinary days worth remembering**
 ```
-
-```text
-In August 2025, I optimized a memory list page by debouncing search input, resetting pagination when filters changed, and keeping query keys aligned with all active filter state.
+Nothing big happened today. Sat with my coffee longer than usual and it was exactly what I needed.
 ```
-
-```text
-In October 2025, I helped debug a local development setup where the frontend was running but the backend API was unavailable, identified missing server dependencies, and started the correct virtual environment server.
+```
+Had a really good conversation with a stranger today. The kind you don't expect to stick with you but does.
+```
+```
+Read something today that I want to remember. The idea that most of life happens in the in-between moments.
 ```

@@ -25,8 +25,12 @@ def add_to_vector_store(memory_id: int, text: str) -> str:
     return chroma_id
 
 
-def search_vector_store(query: str, n_results: int | None = 10) -> list[str]:
-    """Returns a list of ChromaDB IDs ranked by similarity."""
+def search_vector_store(
+    query: str,
+    n_results: int | None = 10,
+    distance_threshold: float = 450.0,
+) -> list[str]:
+    """Returns a list of ChromaDB IDs ranked by similarity and filtered by distance threshold."""
     total_documents = collection.count()
     if total_documents == 0:
         return []
@@ -34,7 +38,13 @@ def search_vector_store(query: str, n_results: int | None = 10) -> list[str]:
     result_count = total_documents if n_results is None else min(n_results, total_documents)
     embedding = embed_text(query)
     results = collection.query(query_embeddings=[embedding], n_results=result_count)
-    return results["ids"][0]
+    
+    ids = results["ids"][0]
+    distances = results["distances"][0] if "distances" in results and results["distances"] else [0.0] * len(ids)
+    
+    filtered_ids = [id_ for id_, dist in zip(ids, distances) if dist <= distance_threshold]
+    return filtered_ids
+
 
 
 def delete_from_vector_store(memory_id: int) -> None:

@@ -1,7 +1,7 @@
 from sqlmodel import Session, SQLModel, create_engine
 
 
-sqlite_file_name = "career_memories.db"
+sqlite_file_name = "remember_this.db"
 sqlite_url = f"sqlite:///{sqlite_file_name}"
 
 engine = create_engine(sqlite_url, connect_args={"check_same_thread": False})
